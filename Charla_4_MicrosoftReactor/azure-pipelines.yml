@@ -1,0 +1,39 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  name: Default
+
+variables:
+- group: Charlas
+- name: CONFIG_PATH
+  value: config.yml
+- name: ENVIRONMENT
+  value: prod
+
+stages:
+- stage: Deploy
+  displayName: Deploy Fabric
+  jobs:
+  - job: FabricDeploy
+    displayName: Publish Fabric items
+    steps:
+    - script: |
+        python --version
+        python -m pip install --upgrade pip
+        python -m pip install fabric-cicd azure-identity
+      workingDirectory: $(System.DefaultWorkingDirectory)
+      displayName: Instalar dependencias fabric-cicd
+
+    - powershell: |
+        python "$(System.DefaultWorkingDirectory)\scripts\deploy_fabric.py"
+      workingDirectory: $(System.DefaultWorkingDirectory)
+      displayName: Ejecutar deploy_with_config
+      env:
+        FABRIC_TENANT_ID: $(FABRIC_TENANT_ID)
+        FABRIC_CLIENT_ID: $(FABRIC_CLIENT_ID)
+        FABRIC_CLIENT_SECRET: $(FABRIC_CLIENT_SECRET)
+        CONFIG_PATH: $(CONFIG_PATH)
+        ENVIRONMENT: $(ENVIRONMENT)

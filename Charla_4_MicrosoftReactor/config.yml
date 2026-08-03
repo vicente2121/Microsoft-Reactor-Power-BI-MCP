@@ -1,0 +1,17 @@
+core:
+  workspace_id:
+    prod: "767add00-9a42-4477-8e85-117a936e3011"
+  repository_directory:
+    prod: "."
+  item_types_in_scope:
+    prod:
+      - "Report"
+      - "SemanticModel"
+
+publish:
+  skip:
+    prod: false
+
+unpublish:
+  skip:
+    prod: true
