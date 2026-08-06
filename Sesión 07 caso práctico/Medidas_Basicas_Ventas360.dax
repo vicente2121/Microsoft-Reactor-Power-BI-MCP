@@ -1,0 +1,17 @@
+Ventas =
+SUM(gold_fact_ventas[ImporteNeto])
+
+Ventas Brutas =
+SUM(gold_fact_ventas[ImporteBruto])
+
+Costo Total =
+SUM(gold_fact_ventas[CostoTotal])
+
+Margen =
+SUM(gold_fact_ventas[Margen])
+
+Margen % =
+DIVIDE([Margen], [Ventas])
+
+Cantidad Vendida =
+SUM(gold_fact_ventas[Cantidad])
