@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-  [string]$TenantId = "9115fcaf-a94d-40b1-a3ba-b062c80555e0",
+  [string]$TenantId = "EL ID DE TU TENANT",
   [string]$Resource = "https://api.fabric.microsoft.com",
   [int]$Port = 39397,
   [switch]$UseDeviceCode,
